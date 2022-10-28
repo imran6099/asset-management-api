@@ -17,6 +17,13 @@ router
   .patch(auth('manageItems'), validate(itemValidation.updateItem), itemController.updateItem)
   .delete(auth('manageItems'), validate(itemValidation.deleteItem), itemController.deleteItem);
 
+router
+  .route('/create-many')
+  .post(auth('manageItems'), validate(itemValidation.createManyItems), itemController.createManyItems);
+
+router
+  .route('/delete-many')
+  .post(auth('manageItems'), validate(itemValidation.deleteManyItems), itemController.deleteManyItems);
 module.exports = router;
 
 /**

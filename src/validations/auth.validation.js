@@ -9,6 +9,12 @@ const register = {
   }),
 };
 
+const accountInfo = {
+  headers: Joi.object().keys({
+    authorization: Joi.string().required(),
+  }),
+};
+
 const login = {
   body: Joi.object().keys({
     email: Joi.string().required(),
@@ -57,4 +63,5 @@ module.exports = {
   forgotPassword,
   resetPassword,
   verifyEmail,
+  accountInfo,
 };

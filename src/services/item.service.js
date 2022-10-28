@@ -1,7 +1,7 @@
 const httpStatus = require('http-status');
 const { Item } = require('../models');
 const ApiError = require('../utils/ApiError');
-
+const Counter = require('../models/counter..model');
 /**
  * Create a item
  * @param {Object} item
@@ -9,6 +9,31 @@ const ApiError = require('../utils/ApiError');
  */
 const createItem = async (item) => {
   return Item.create(item);
+};
+
+const createManyItems = async (items) => {
+  if (Array.isArray(items) && items.length) {
+    const tagedItems = items.map(async (item) => {
+      const count = await Counter.findByIdAndUpdate(
+        { _id: 'ITEM-' },
+        { $inc: { seq: 1 } },
+        {
+          new: true,
+          upsert: true,
+        }
+      );
+      return new Promise((resolve) => {
+        resolve({
+          ...item,
+          // eslint-disable-next-line prefer-template
+          itemNumber: count._id + ('000000' + count.seq).slice(-6),
+        });
+      });
+    });
+    // eslint-disable-next-line no-param-reassign
+    const docs = await Promise.all(tagedItems);
+    return Item.insertMany(docs);
+  }
 };
 
 /**
@@ -63,6 +88,9 @@ const deleteItemById = async (itemId) => {
   await item.remove();
   return item;
 };
+const deleteManyItemsById = async (ids) => {
+  return Item.deleteMany({ _id: ids });
+};
 
 module.exports = {
   createItem,
@@ -70,4 +98,6 @@ module.exports = {
   getItemById,
   updateItemById,
   deleteItemById,
+  createManyItems,
+  deleteManyItemsById,
 };

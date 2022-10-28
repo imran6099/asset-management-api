@@ -6,12 +6,23 @@ const createItem = {
     name: Joi.string().required(),
     description: Joi.string().required(),
     price: Joi.number().required(),
-    imageUrl: Joi.string().required(),
+    images: Joi.array(),
     status: Joi.string().required(),
     category: Joi.string().custom(objectId).required(),
     dateOfPurchase: Joi.date().required(),
     location: Joi.string().required(),
   }),
+};
+
+const createManyItems = {
+  body: {
+    items: Joi.array(),
+  },
+};
+const deleteManyItems = {
+  body: {
+    ids: Joi.array(),
+  },
 };
 
 const getItems = {
@@ -40,7 +51,7 @@ const updateItem = {
       name: Joi.string(),
       description: Joi.string(),
       price: Joi.number(),
-      imageUrl: Joi.string(),
+      images: Joi.array(),
       status: Joi.string(),
       category: Joi.string().custom(objectId),
       dateOfPurchase: Joi.date(),
@@ -61,4 +72,6 @@ module.exports = {
   getItem,
   updateItem,
   deleteItem,
+  createManyItems,
+  deleteManyItems,
 };

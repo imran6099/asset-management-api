@@ -9,6 +9,11 @@ const createItem = catchAsync(async (req, res) => {
   res.status(httpStatus.CREATED).send(item);
 });
 
+const createManyItems = catchAsync(async (req, res) => {
+  await itemService.createManyItems(req.body.items);
+  res.status(httpStatus.CREATED).send('Done!');
+});
+
 const getItems = catchAsync(async (req, res) => {
   const filter = pick(req.query, ['category', 'location']);
   const options = pick(req.query, ['sortBy', 'limit', 'page', 'populate']);
@@ -34,10 +39,17 @@ const deleteItem = catchAsync(async (req, res) => {
   res.status(httpStatus.NO_CONTENT).send();
 });
 
+const deleteManyItems = catchAsync(async (req, res) => {
+  await itemService.deleteManyItemsById(req.body.ids);
+  res.status(httpStatus.NO_CONTENT).send('Done!');
+});
+
 module.exports = {
   createItem,
   getItems,
   getItem,
   updateItem,
   deleteItem,
+  createManyItems,
+  deleteManyItems,
 };

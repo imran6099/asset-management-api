@@ -21,10 +21,7 @@ const itemSchema = mongoose.Schema(
       type: String,
       unique: true,
     },
-    imageUrl: {
-      type: String,
-      required: true,
-    },
+    images: [],
     status: {
       type: String,
       enum: [itemStatus.ACTIVE, itemStatus.INACTIVE, itemStatus.DAMAGED],
