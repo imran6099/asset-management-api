@@ -4,6 +4,12 @@ const itemStatus = {
   DAMAGED: 'damaged',
 };
 
+const location = {
+  JUUNGAL: 'juungal',
+  KM13: 'km13',
+};
+
 module.exports = {
   itemStatus,
+  location,
 };

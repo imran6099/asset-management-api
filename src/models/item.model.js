@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const { toJSON, paginate } = require('./plugins');
-const { itemStatus } = require('../config/item');
+const { itemStatus, location } = require('../config/item');
 const Counter = require('./counter..model');
 
 const itemSchema = mongoose.Schema(
@@ -39,6 +39,7 @@ const itemSchema = mongoose.Schema(
     location: {
       type: String,
       required: true,
+      enum: [location.JUUNGAL, location.KM13],
     },
   },
   {
