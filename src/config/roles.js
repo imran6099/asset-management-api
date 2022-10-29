@@ -11,6 +11,7 @@ const allRoles = {
     'manageIssues',
     'getCategories',
     'manageCategories',
+    'seeInsights',
   ],
   superAdmin: [
     'getUsers',
@@ -22,6 +23,7 @@ const allRoles = {
     'manageIssues',
     'getCategories',
     'manageCategories',
+    'seeInsights',
   ],
 };
 

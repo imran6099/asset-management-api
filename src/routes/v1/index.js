@@ -6,6 +6,7 @@ const config = require('../../config/config');
 const categoryRoute = require('./category.route');
 const itemRoute = require('./item.route');
 const issueRoute = require('./issue.route');
+const insightsRoute = require('./insights.route');
 
 const router = express.Router();
 
@@ -29,6 +30,10 @@ const defaultRoutes = [
   {
     path: '/issues',
     route: issueRoute,
+  },
+  {
+    path: '/insights',
+    route: insightsRoute,
   },
 ];
 
