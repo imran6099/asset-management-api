@@ -1,19 +1,7 @@
 const allRoles = {
-  user: ['getItems', 'getIssues', 'getCategories'],
-
+  user: ['getItems', 'getIssues', 'getCategories', 'manageIssues', 'seeInsights'],
+  manager: ['getItems', 'manageItems', 'getIssues', 'manageIssues', 'getCategories', 'manageCategories', 'seeInsights'],
   admin: [
-    'getUsers',
-    'manageUsers',
-    'manageIssueStatus',
-    'getItems',
-    'manageItems',
-    'getIssues',
-    'manageIssues',
-    'getCategories',
-    'manageCategories',
-    'seeInsights',
-  ],
-  superAdmin: [
     'getUsers',
     'manageUsers',
     'manageIssueStatus',
