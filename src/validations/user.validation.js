@@ -36,6 +36,7 @@ const updateUser = {
       email: Joi.string().email(),
       password: Joi.string().custom(password),
       name: Joi.string(),
+      role: Joi.string(),
       requirePassword: Joi.bool(),
     })
     .min(1),
