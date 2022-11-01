@@ -1,14 +1,15 @@
 {
-  "name": "create-nodejs-express-app",
+  "name": "asset-management-api",
   "version": "1.7.0",
-  "description": "Create a Node.js app for building production-ready RESTful APIs using Express, by running one command",
+  "description": "This is the backend API server for asset management software",
   "bin": "bin/createNodejsApp.js",
   "main": "src/index.js",
-  "repository": "https://github.com/hagopj13/node-express-boilerplate.git",
-  "author": "Hagop Jamkojian <hagopj13@gmail.com>",
+  "repository": "https://github.com/imran6099/asset-management-api.git",
+  "author": "Imran Abdullah <ihkldoo@gmail.com>",
   "license": "MIT",
   "engines": {
-    "node": ">=12.0.0"
+    "node": ">=12.0.0",
+    "yarn": "1.22.19"
   },
   "scripts": {
     "start": "cross-env NODE_ENV=production nodemon src/index.js",
