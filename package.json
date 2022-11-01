@@ -12,9 +12,8 @@
     "yarn": "1.22.19"
   },
   "scripts": {
-    "start": "cross-env NODE_ENV=production nodemon src/index.js",
-    "heroku-postbuild": "yarn install",
-    "dev": "concurrently \"yarn install\" \"yarn dev\"",
+    "start": "pm2 start ecosystem.config.json --no-daemon",
+    "dev": "cross-env NODE_ENV=development nodemon src/index.js",
     "test": "jest -i --colors --verbose --detectOpenHandles",
     "test:watch": "jest -i --watchAll",
     "coverage": "jest -i --coverage",
@@ -53,7 +52,6 @@
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "compression": "^1.7.4",
-    "concurrently": "^7.5.0",
     "cors": "^2.8.5",
     "cross-env": "^7.0.0",
     "dotenv": "^10.0.0",
