@@ -74,7 +74,7 @@ const updateTransferReturnStatus = {
   body: Joi.object()
     .keys({
       returned: Joi.bool().required(),
-      POD: Joi.string().required(),
+      POD: Joi.array().required(),
     })
     .min(1),
 };

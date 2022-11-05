@@ -39,9 +39,7 @@ const transferSchema = mongoose.Schema(
       required: true,
       default: false,
     },
-    POD: {
-      type: String,
-    },
+    POD: [],
     transferReqStatus: {
       type: String,
       enum: [issueStatus.UNDER_REVIEW, issueStatus.ACCEPTED, issueStatus.REJECTED],

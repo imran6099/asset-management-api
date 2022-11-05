@@ -40,9 +40,7 @@ const loanSchema = mongoose.Schema(
       required: true,
       default: false,
     },
-    POD: {
-      type: String,
-    },
+    POD: [],
     loanReqStatus: {
       type: String,
       enum: [issueStatus.UNDER_REVIEW, issueStatus.ACCEPTED, issueStatus.REJECTED],

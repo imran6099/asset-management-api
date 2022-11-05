@@ -1,4 +1,4 @@
-const { Item, Category, Issue } = require('../models');
+const { Item, Category, Issue, User, Loan, Transfer } = require('../models');
 /**
  * Create a item
  * @param {Object} item
@@ -8,10 +8,17 @@ const getTotals = async () => {
   const totalItems = await Item.count();
   const totalIssues = await Issue.count();
   const totalCategories = await Category.count();
+  const totalTransfers = await Transfer.count();
+  const totalLoans = await Loan.count();
+  const totalUsers = await User.count();
+
   const totals = {
     totalItems,
     totalCategories,
     totalIssues,
+    totalTransfers,
+    totalLoans,
+    totalUsers,
   };
   return totals;
 };
@@ -80,10 +87,34 @@ const getItemsBasedOnLocation = async () => {
   return response;
 };
 
+const getTransfersBasedOnReturnStatus = async () => {
+  const returnedItems = await Transfer.find({ returned: true }).count();
+  const notReturnedItems = await Transfer.find({ returned: false }).count();
+
+  const response = [
+    { label: 'Returned', value: returnedItems },
+    { label: 'Not Returned', value: notReturnedItems },
+  ];
+  return response;
+};
+
+const getLoansBasedOnReturnStatus = async () => {
+  const returnedItems = await Loan.find({ returned: true }).count();
+  const notReturnedItems = await Loan.find({ returned: false }).count();
+
+  const response = [
+    { label: 'Returned', value: returnedItems },
+    { label: 'Not Returned', value: notReturnedItems },
+  ];
+  return response;
+};
+
 module.exports = {
   getTotals,
   getItemsBasedOnStatus,
   getIssuesBasedOnStatus,
   getItemsBasedOnLocation,
   getItemsBasedOnCategory,
+  getTransfersBasedOnReturnStatus,
+  getLoansBasedOnReturnStatus,
 };

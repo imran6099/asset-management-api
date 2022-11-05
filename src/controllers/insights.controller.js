@@ -26,11 +26,21 @@ const getItemsWithLocation = catchAsync(async (req, res) => {
   const items = await insightsService.getItemsBasedOnLocation();
   res.status(httpStatus.CREATED).send(items);
 });
+const getTransfersBasedOnReturnStatus = catchAsync(async (req, res) => {
+  const items = await insightsService.getTransfersBasedOnReturnStatus();
+  res.status(httpStatus.CREATED).send(items);
+});
 
+const getLoansBasedOnReturnStatus = catchAsync(async (req, res) => {
+  const items = await insightsService.getLoansBasedOnReturnStatus();
+  res.status(httpStatus.CREATED).send(items);
+});
 module.exports = {
   getItemsWithCategory,
   getTotals,
   getItemsWithStatus,
   getIssuesWithStatus,
   getItemsWithLocation,
+  getTransfersBasedOnReturnStatus,
+  getLoansBasedOnReturnStatus,
 };

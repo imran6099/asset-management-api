@@ -16,7 +16,15 @@ const createItem = {
 
 const createManyItems = {
   body: {
-    items: Joi.array(),
+    items: Joi.array().items({
+      name: Joi.string().required(),
+      description: Joi.string().required(),
+      price: Joi.number().required(),
+      category: Joi.string().custom(objectId).required(),
+      status: Joi.string().required(),
+      dateOfPurchase: Joi.date().required(),
+      location: Joi.string().allow(''),
+    }),
   },
 };
 const deleteManyItems = {

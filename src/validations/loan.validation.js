@@ -46,11 +46,9 @@ const updateLoan = {
       reason: Joi.string(),
       owner: Joi.string(),
       dateOfLoan: Joi.date(),
-      images: Joi.date(),
+      images: Joi.array(),
       locationOfUse: Joi.string().required().valid('km13', 'juungal'),
       dateOfReturn: Joi.date(),
-      returned: Joi.bool(),
-      POD: Joi.string(),
       loanReqStatus: Joi.string(),
     })
     .min(1),
@@ -74,7 +72,7 @@ const updateLoanReturnStatus = {
   body: Joi.object()
     .keys({
       returned: Joi.bool().required(),
-      POD: Joi.string().required(),
+      POD: Joi.array().required(),
     })
     .min(1),
 };

@@ -1,5 +1,19 @@
 const allRoles = {
-  user: ['getItems', 'getIssues', 'getCategories', 'manageIssues', 'seeInsights', 'getTransfers', 'getLoans'],
+  user: [
+    'getItems',
+    'getIssues',
+    'getCategories',
+    'manageIssues',
+    'seeInsights',
+    'getTransfers',
+    'getLoans',
+    'manageTransfers',
+    'manageLoans',
+    'manageLoanReqStatus',
+    'manageLoanReturnStatus',
+    'manageTransferReqStatus',
+    'manageTransferReturnStatus',
+  ],
   manager: [
     'getItems',
     'manageItems',
@@ -12,6 +26,10 @@ const allRoles = {
     'getTransfers',
     'manageLoans',
     'getLoans',
+    'manageLoanReqStatus',
+    'manageLoanReturnStatus',
+    'manageTransferReqStatus',
+    'manageTransferReturnStatus',
   ],
   admin: [
     // User rights
