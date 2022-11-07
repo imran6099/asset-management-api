@@ -2,10 +2,11 @@ const httpStatus = require('http-status');
 const pick = require('../utils/pick');
 const ApiError = require('../utils/ApiError');
 const catchAsync = require('../utils/catchAsync');
-const { transferService } = require('../services');
+const { transferService, telegramService } = require('../services');
 
 const createTransfer = catchAsync(async (req, res) => {
   const transfer = await transferService.createTransfer(req.body);
+  await telegramService.sendTransferReport(transfer);
   res.status(httpStatus.CREATED).send(transfer);
 });
 
@@ -36,6 +37,7 @@ const updateTransferReqStatus = catchAsync(async (req, res) => {
 
 const updateTransferReturnStatus = catchAsync(async (req, res) => {
   const transfer = await transferService.updateTransferReturnStatus(req.params.transferId, req.body);
+  await telegramService.sendTransferReturnedReport(transfer);
   res.send(transfer);
 });
 const deleteTransfer = catchAsync(async (req, res) => {

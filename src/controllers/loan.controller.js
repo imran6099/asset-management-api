@@ -2,10 +2,11 @@ const httpStatus = require('http-status');
 const pick = require('../utils/pick');
 const ApiError = require('../utils/ApiError');
 const catchAsync = require('../utils/catchAsync');
-const { loanService } = require('../services');
+const { loanService, telegramService } = require('../services');
 
 const createLoan = catchAsync(async (req, res) => {
   const loan = await loanService.createLoan(req.body);
+  await telegramService.sendLoanReport(loan);
   res.status(httpStatus.CREATED).send(loan);
 });
 
@@ -36,6 +37,9 @@ const updateLoanReqStatus = catchAsync(async (req, res) => {
 
 const updateLoanReturnStatus = catchAsync(async (req, res) => {
   const loan = await loanService.updateLoanReturnStatus(req.params.loanId, req.body);
+  if (loan) {
+    await telegramService.sendLoanReturnedReport(loan);
+  }
   res.send(loan);
 });
 const deleteLoan = catchAsync(async (req, res) => {

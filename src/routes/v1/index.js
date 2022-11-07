@@ -9,6 +9,7 @@ const issueRoute = require('./issue.route');
 const insightsRoute = require('./insights.route');
 const transferRoute = require('./transfer.route');
 const loanRoute = require('./loan.route');
+const telegramRoute = require('./telegram.route');
 
 const router = express.Router();
 
@@ -44,6 +45,10 @@ const defaultRoutes = [
   {
     path: '/loans',
     route: loanRoute,
+  },
+  {
+    path: '/telegram',
+    route: telegramRoute,
   },
 ];
 

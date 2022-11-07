@@ -8,3 +8,4 @@ module.exports.issueService = require('./issue.service');
 module.exports.insightsService = require('./insights.service');
 module.exports.transferService = require('./transfer.service');
 module.exports.loanService = require('./loan.service');
+module.exports.telegramService = require('./telegram.service');
