@@ -74,9 +74,6 @@ const sendLoanReport = async (data) => {
 };
 
 const sendTransferReturnedReport = async (data) => {
-  // eslint-disable-next-line no-console
-  console.log(data);
-
   let message;
   if (data.returned === true) {
     message = `
@@ -119,7 +116,7 @@ const sendLoanReturnedReport = async (data) => {
   }
   if (data.returned === false) {
     message = `
-    *====Loan Return Update ====*\n
+    *==== Loan Return Update ====*\n
     *${data.itemName}* was loaned by *${data.loanRequestFrom.name}* on *${data.dateOfLoan}* return status is updated to #false!\n
     `;
     return axios.post(`https://api.telegram.org/bot${process.env.TELEGRAM_BOT_API_KEY}/sendMessage`, {
