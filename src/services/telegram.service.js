@@ -105,7 +105,7 @@ const sendLoanReturnedReport = async (data) => {
   if (data.returned === true) {
     message = `
     *==== Loan Return Update ====*\n
-    *${data.itemName}* was loaned by *${data.loanRequestFrom.name}* on *${data.dateOfLoan}* now successfully returned!\n
+    *${data.itemName}* was loaned from *${data.owner}* by *${data.loanRequestFrom.name}* on *${data.dateOfLoan}* now successfully returned!\n
     `;
     return axios.post(`https://api.telegram.org/bot${process.env.TELEGRAM_BOT_API_KEY}/sendPhoto`, {
       chat_id: process.env.ENG_NUUR_CHAT_ID,
@@ -117,7 +117,7 @@ const sendLoanReturnedReport = async (data) => {
   if (data.returned === false) {
     message = `
     *==== Loan Return Update ====*\n
-    *${data.itemName}* was loaned by *${data.loanRequestFrom.name}* on *${data.dateOfLoan}* return status is updated to #false!\n
+    *${data.itemName}* was loaned from *${data.owner}* by *${data.loanRequestFrom.name}* on *${data.dateOfLoan}* return status is updated to #false!\n
     `;
     return axios.post(`https://api.telegram.org/bot${process.env.TELEGRAM_BOT_API_KEY}/sendMessage`, {
       chat_id: process.env.ENG_NUUR_CHAT_ID,
